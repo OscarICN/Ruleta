@@ -4,7 +4,8 @@ import com.ibm.academia.apiruleta.model.dto.ApuestaDTO;
 import com.ibm.academia.apiruleta.model.entities.Apuesta;
 
 public class MapperApuesta {
-    public static ApuestaDTO mapApuesta(Apuesta apuesta){
+    public static ApuestaDTO mapApuesta(Apuesta apuesta)
+    {
         ApuestaDTO apuestaDTO = new ApuestaDTO();
         apuestaDTO.setId(apuesta.getId());
         apuestaDTO.setValorApuesta(apuesta.getValorApuesta());

@@ -19,7 +19,8 @@ public class RuletaException
 {
     @ExceptionHandler(value = ApuestaCancelada.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public Map<String,Object> apuestasNoRealizadas(ApuestaCancelada ac){
+    public Map<String,Object> apuestasNoRealizadas(ApuestaCancelada ac)
+    {
         Map<String, Object> response = new HashMap<>();
         response.put("message", ac.getMessage());
         return response;
@@ -27,7 +28,8 @@ public class RuletaException
 
     @ExceptionHandler(value = DatosInvalidos.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public Map<String,Object> datosApuestaNoValidos(DatosInvalidos di){
+    public Map<String,Object> datosApuestaNoValidos(DatosInvalidos di)
+    {
         Map<String, Object> response = new HashMap<>();
         response.put("message", di.getMessage());
         return response;
@@ -35,7 +37,8 @@ public class RuletaException
 
     @ExceptionHandler(value = NoExisteRuleta.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public Map<String,Object> ruletaNoExiste(NoExisteRuleta ne){
+    public Map<String,Object> ruletaNoExiste(NoExisteRuleta ne)
+    {
         Map<String, Object> response = new HashMap<>();
         response.put("message", ne.getMessage());
         return response;
@@ -43,7 +46,8 @@ public class RuletaException
 
     @ExceptionHandler(value = RuletaCerrada.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public Map<String,Object> ruletaCerrada(RuletaCerrada rc){
+    public Map<String,Object> ruletaCerrada(RuletaCerrada rc)
+    {
         Map<String, Object> response = new HashMap<>();
         response.put("message", rc.getMessage());
         return response;
@@ -51,7 +55,8 @@ public class RuletaException
 
     @ExceptionHandler(value = MissingServletRequestParameterException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public Map<String, Object> missingRequestParameters(MissingServletRequestParameterException ex) {
+    public Map<String, Object> missingRequestParameters(MissingServletRequestParameterException ex)
+    {
         Map<String, Object> response = new HashMap<>();
 
         response.put("message", "Faltan los siguientes parámetros");
@@ -62,7 +67,8 @@ public class RuletaException
 
     @ExceptionHandler(value = MethodArgumentTypeMismatchException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public Map<String, Object> paramTypeMismatch(MethodArgumentTypeMismatchException ex) {
+    public Map<String, Object> paramTypeMismatch(MethodArgumentTypeMismatchException ex)
+    {
         Map<String, Object> response = new HashMap<>();
 
         response.put("message", "Tipo de dato incorrecto");
