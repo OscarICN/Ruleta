@@ -28,40 +28,40 @@ public class RuletaException
 
     @ExceptionHandler(value = DatosInvalidos.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public Map<String,Object> datosApuestaNoValidos(DatosInvalidos di)
+    public Map<String,Object> datosApuestaNoValidos(DatosInvalidos datosinvalidos)
     {
         Map<String, Object> response = new HashMap<>();
-        response.put("message", di.getMessage());
+        response.put("message", datosinvalidos.getMessage());
         return response;
     }
 
     @ExceptionHandler(value = NoExisteRuleta.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public Map<String,Object> ruletaNoExiste(NoExisteRuleta ne)
+    public Map<String,Object> ruletaNoExiste(NoExisteRuleta noexiste)
     {
         Map<String, Object> response = new HashMap<>();
-        response.put("message", ne.getMessage());
+        response.put("message", noexiste.getMessage());
         return response;
     }
 
     @ExceptionHandler(value = RuletaCerrada.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public Map<String,Object> ruletaCerrada(RuletaCerrada rc)
+    public Map<String,Object> ruletaCerrada(RuletaCerrada ruletacerrada)
     {
         Map<String, Object> response = new HashMap<>();
-        response.put("message", rc.getMessage());
+        response.put("message", ruletacerrada.getMessage());
         return response;
     }
 
     @ExceptionHandler(value = MissingServletRequestParameterException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public Map<String, Object> missingRequestParameters(MissingServletRequestParameterException ex)
+    public Map<String, Object> missingRequestParameters(MissingServletRequestParameterException excep)
     {
         Map<String, Object> response = new HashMap<>();
 
         response.put("message", "Faltan los siguientes parámetros");
-        response.put("param", ex.getParameterName());
-        response.put("paramType", ex.getParameterType());
+        response.put("param", excep.getParameterName());
+        response.put("paramType", excep.getParameterType());
         return response;
     }
 
