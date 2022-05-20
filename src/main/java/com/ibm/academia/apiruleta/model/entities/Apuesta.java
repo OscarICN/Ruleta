@@ -11,7 +11,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name="apuestas",schema="Ruleta")
+@Table(name="apuestas",schema="ruleta")
 @Setter
 @Getter
 @NoArgsConstructor

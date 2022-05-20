@@ -12,7 +12,7 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name="ruletas", schema = "Ruleta")
+@Table(name="ruletas", schema = "ruleta")
 @Setter
 @Getter
 @NoArgsConstructor
