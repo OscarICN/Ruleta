@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.ibm.academia.apiruleta</groupId>
 	<artifactId>API-Ruleta</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0</version>
 	<name>API-Ruleta</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
