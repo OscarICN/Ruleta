@@ -50,10 +50,10 @@ public class ApuestaDAOImpl implements ApuestaDAO
                     apuestaGuardada = guardar(nuevaApuesta);
                 }
                 else
-                    throw new DatosInvalidos("No es posible apostar a este valor");
+                    throw new DatosInvalidos("No es posible apostar con estos valores");
 
             }catch (NumberFormatException e) {
-                throw new DatosInvalidos("No es posible apostar a este valor");
+                throw new DatosInvalidos("No es posible apostar con estos valores");
             }
         }
         return apuestaGuardada;
