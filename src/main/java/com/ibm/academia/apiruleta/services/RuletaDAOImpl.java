@@ -37,10 +37,12 @@ public class RuletaDAOImpl implements RuletaDAO {
         Optional<Ruleta> oRuleta = repository.findById(id);
         Ruleta ruletaEncontrada;
 
-        if(oRuleta.isPresent()){
+        if(oRuleta.isPresent())
+        {
             ruletaEncontrada=oRuleta.get();
         }
-        else{
+        else
+        {
             throw new NoExisteRuleta("La ruleta con el ID " + id + " no existe.");
         }
 
@@ -48,14 +50,16 @@ public class RuletaDAOImpl implements RuletaDAO {
     }
 
     @Override
-    public Integer crear() {
+    public Integer crear()
+    {
         Ruleta ruleta = new Ruleta();
         guardar(ruleta);
         return ruleta.getId();
     }
 
     @Override
-    public Boolean abrir(Integer id) {
+    public Boolean abrir(Integer id)
+    {
         Ruleta ruleta = buscarPorId(id);
         ruleta.setEstaAbierta(true);
         guardar(ruleta);
@@ -63,7 +67,8 @@ public class RuletaDAOImpl implements RuletaDAO {
     }
 
     @Override
-    public Apuesta apostar(Integer idRuleta, String valorApuesta, Double monto) {
+    public Apuesta apostar(Integer idRuleta, String valorApuesta, Double monto)
+    {
         Ruleta ruleta = buscarPorId(idRuleta);
         Apuesta nuevaApuesta;
 
@@ -76,7 +81,8 @@ public class RuletaDAOImpl implements RuletaDAO {
     }
 
     @Override
-    public void girar(Integer id) {
+    public void rodar(Integer id)
+    {
         Ruleta ruleta = buscarPorId(id);
         Integer numero = generarNumeroGanador();
         ruleta.setNumeroGanador(numero);
@@ -85,18 +91,21 @@ public class RuletaDAOImpl implements RuletaDAO {
     }
 
     @Override
-    public Iterable<Apuesta> cerrar(Integer id) {
+    public Iterable<Apuesta> cerrar(Integer id)
+    {
         Ruleta ruleta = buscarPorId(id);
-        girar(id);
+        rodar(id);
         Iterable<Apuesta> apuestasCalculadas = apuestaDAO.calcularResultados(ruleta);
         guardar(ruleta);
         return apuestasCalculadas;
     }
 
     @Override
-    public Iterable<Ruleta> buscarTodos() {
+    public Iterable<Ruleta> buscarTodos()
+    {
         Iterable<Ruleta> ruletas = repository.findAll();
-        if(((List<Ruleta>)ruletas).isEmpty()){
+        if(((List<Ruleta>)ruletas).isEmpty())
+        {
             throw new NoExisteRuleta("No existen ruletas que mostrar");
         }
         return ruletas;

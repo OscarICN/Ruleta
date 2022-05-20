@@ -37,22 +37,29 @@ public class ApuestaDAOImpl implements ApuestaDAO
 
 
     @Override
-    public Apuesta crearApuesta(String valorApuesta, Double monto, Ruleta ruleta) {
+    public Apuesta crearApuesta(String valorApuesta, Double monto, Ruleta ruleta)
+    {
         Apuesta apuestaGuardada;
-        if(validarColorApuesta(valorApuesta) && validarMontoApuesta(monto)){
+        if(validarColorApuesta(valorApuesta) && validarMontoApuesta(monto))
+        {
             Apuesta nuevaApuesta = new Apuesta(valorApuesta.toUpperCase(), TipoApuesta.COLOR,monto,ruleta);
             apuestaGuardada =guardar(nuevaApuesta);
-        }else {
-            try{
+        }else
+        {
+            try
+            {
+
                 Integer numeroApuesta = Integer.parseInt(valorApuesta);
-                if(validarNumeroApuesta(numeroApuesta) && validarMontoApuesta(monto)){
+                if(validarNumeroApuesta(numeroApuesta) && validarMontoApuesta(monto))
+                {
                     Apuesta nuevaApuesta = new Apuesta(valorApuesta,TipoApuesta.NUMERO,monto,ruleta);
                     apuestaGuardada = guardar(nuevaApuesta);
                 }
                 else
                     throw new DatosInvalidos("No es posible apostar con estos valores");
 
-            }catch (NumberFormatException e) {
+            }catch (NumberFormatException e)
+            {
                 throw new DatosInvalidos("No es posible apostar con estos valores");
             }
         }
@@ -60,13 +67,15 @@ public class ApuestaDAOImpl implements ApuestaDAO
     }
 
     @Override
-    public Iterable<Apuesta> calcularResultados(Ruleta ruleta) {
+    public Iterable<Apuesta> calcularResultados(Ruleta ruleta)
+    {
 
         List<Apuesta> apuestas = (List<Apuesta>) buscarApuestasPorRuletaId(ruleta.getId());
 
         if (apuestas.isEmpty())
             throw new ApuestaCancelada("No hay apuestas para calcular");
-        else {
+        else
+        {
             ruleta.setEstaAbierta(false);
             apuestas.forEach(apuesta -> guardar(calculoApuesta(ruleta,apuesta)));
         }
